@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Asistente de Ahorro</string>
+    <string name="saldoFecha">Saldo al:</string>
+    <string name="saldoPesos">$00000.00</string>
+    <string name="ingresos">Ingresos:</string>
+    <string name="egresos">Egresos:</string>
+    <string name="gastoTC">Gastos T. Crédito</string>
+    <string name="n_ingreso">Nuevo Ingreso</string>
+    <string name="n_egreso">Nuevo Egreso</string>
+    <string name="detalle">Detalle</string>
+    <string name="nuevoIng">Nuevo Ingreso</string>
+    <string name="monto">Monto:</string>
+    <string name="concepto">Concepto:</string>
+    <string name="selec_fecha">Seleccionar Fecha</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="categoria">Categoría</string>
+    <string name="nuevoEg">Nuevo Egreso</string>
+
+
+</resources>

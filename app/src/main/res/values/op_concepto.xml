@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="conceptoI">
+        <item>Sueldo</item>
+        <item>Préstamos</item>
+        <item>Otros</item>
+    </string-array>
+    <string-array name="conceptoE">
+        <item>Efectivo</item>
+        <item>Débito</item>
+        <item>Transferencia</item>
+        <item>Crédito</item>
+    </string-array>
+    <string-array name="categoria">
+        <item>Alquiler</item>
+        <item>Mercado</item>
+        <item>Transsporte</item>
+        <item>Impuestos</item>
+        <item>Servicios</item>
+        <item>Esparcimientos</item>
+        <item>Otros</item>
+    </string-array>
+</resources>
