@@ -5,8 +5,10 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.Time;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -34,39 +36,36 @@ private TextView tvFecha;
         ArrayAdapter<CharSequence> adapCat=ArrayAdapter.createFromResource(this,R.array.categoria,
             android.R.layout.simple_spinner_item);
         categorias.setAdapter(adapCat);
-//    Calendar calendario=Calendar.getInstance();
-  //  dia= calendario.get(Calendar.DAY_OF_MONTH);
-    //mes= calendario.get(Calendar.MONTH)+1;
-    //anio= calendario.get(Calendar.YEAR);
-    //selecFecha();
-/*    selectorFecha=new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            dia=dayOfMonth;
-            mes=month;
-            anio=year;
-           selecFecha();
-
-        }
-    };*/
+        tvFecha=(TextView)findViewById(R.id.tvFecha);
+    Time hoy =new Time(Time.getCurrentTimezone());
+    hoy.setToNow();
+    dia=hoy.monthDay;
+    mes=hoy.month;
+    anio=hoy.year;
+    mostrar_fecha(dia,mes,anio);
 }
 
-/*    @Override
-    protected Dialog onCreateDialog(int id) {
-        switch (id){
-            case 0:
-            return new DatePickerDialog(this,selectorFecha,anio,mes,dia);
+    private void mostrar_fecha(int day, int month, int year) {
+        tvFecha.setText(dosDig(day)+"/"+dosDig(month+1)+"/"+year);
+    }
 
-        }
-        return null;
-    }*/
+    private String dosDig(int n) {
+        return (n<=9) ? ("0"+n) : String.valueOf(n);
+    }
 
-/*    public void selecFecha(){
-        tvFecha.setText(dia+"/"+mes+"/"+anio);
-    }*/
- /*   public void mostrarCalendario(View control){
-    showDialog(tipoDialogo);
-    }*/
+    public void abrir_calendario(View view){
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                dia=day;
+                mes=month;
+                anio=year;
+                mostrar_fecha(dia,mes,anio);
+            }
+        });
+        newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
     public void act_principal(View view){
         Intent i=new Intent(this, MainActivity.class);
         startActivity(i);
