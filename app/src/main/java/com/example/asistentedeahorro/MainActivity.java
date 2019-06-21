@@ -1,13 +1,13 @@
 package com.example.asistentedeahorro;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.view.View;
 import android.widget.TextView;
 
-import java.sql.Date;
 
 class MainActivity extends AppCompatActivity {
     private TextView saldo_pesos;
@@ -25,7 +25,7 @@ class MainActivity extends AppCompatActivity {
         Time hoy =new Time(Time.getCurrentTimezone());
         hoy.setToNow();
         int dia=hoy.monthDay;
-        int mes=hoy.month+1;
+        int mes=(hoy.month+1);
         String mesString="";
         switch (mes)
         {
@@ -54,12 +54,13 @@ class MainActivity extends AppCompatActivity {
             case 12:  mesString = "Diciembre";
                 break;
         }
-        //String fecha=hoy.toString();
         String fechaActual=dia+" de "+mesString;
         saldoFecha.setText("Saldo al "+fechaActual);
-
-    }
-    public void tomarFecha(){
+        //ARMANDO CONSULTA EN BD PARA OBTENER LOS VALORES A LLENAR EN LOS CAMPOS SALDOPESOS,ING,EG,GTC
+        /*AdminDB admin=new AdminDB(this,"BDmovimiento",null,1);
+        SQLiteDatabase BD=admin.getWritableDatabase();
+        String consulta="";
+*/
 
     }
     public void act_ingresos(View view){

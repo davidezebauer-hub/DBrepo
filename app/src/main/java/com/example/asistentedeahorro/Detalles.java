@@ -21,15 +21,32 @@ public class Detalles extends AppCompatActivity {
         Admin=new AdminDB(this,"BDmovimiento",null,1);
         SQLiteDatabase DB=Admin.getReadableDatabase();
         Cursor cursor= DB.rawQuery("select * from movimientos",null);
-        ContentValues reg=new ContentValues();
         lista=(ListView)findViewById(R.id.lista);
-        listaPrueba=new ArrayList<String>();
+        ArrayList<String> listaPrueba=new ArrayList<>();
         int pos=0;
-        //cursor.moveToFirst();
-        while(cursor.moveToNext()){
-            listaPrueba.add(pos,cursor.getString(1)+"-");
-                pos++;
+        if(cursor.moveToFirst()){
+            do {
+                String str_monto=Float.toString(cursor.getFloat(2));
+                String text_fila=cursor.getString(0)+cursor.getString(1)+str_monto+cursor.getString(3);
+                listaPrueba.add(text_fila);
+               // pos++;
+
+            }while(cursor.moveToNext());
         }
+/*        while(cursor.moveToNext()){
+            String str_monto=Float.toString(cursor.getFloat(2));
+            String text_fila=cursor.getString(0)+cursor.getString(1)+str_monto+cursor.getString(3);
+            listaPrueba.add(pos,text_fila);
+            pos++;
+        }
+  */
+/*
+        for(int i=0;i<15;i++){
+            String str_monto=Float.toString(cursor.getFloat(2));
+            String text_fila=cursor.getString(0)+cursor.getString(1)+str_monto+cursor.getString(3);
+            listaPrueba.add(i,text_fila);
+            cursor.moveToNext();
+        }*/
         ArrayAdapter adaptador=new ArrayAdapter(this,android.R.layout.simple_list_item_1,listaPrueba);
         lista.setAdapter(adaptador);
         DB.close();

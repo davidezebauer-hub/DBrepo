@@ -75,7 +75,7 @@ private int dia, mes, anio;
         String categoria_DB="";
         if(!monto.getText().toString().isEmpty()){
             ContentValues registro=new ContentValues();
-            registro.put ("id",0);
+            //registro.put ("id",0);
             registro.put("fecha", fecha_DB);
             registro.put("monto",monto_DB);
             registro.put("concepto",concepto_DB);
