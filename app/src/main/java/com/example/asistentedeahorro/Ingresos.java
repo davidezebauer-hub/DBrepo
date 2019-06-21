@@ -1,7 +1,9 @@
 package com.example.asistentedeahorro;
 
 import android.app.DatePickerDialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.Time;
@@ -10,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 public class Ingresos extends AppCompatActivity {
 private TextView monto,fecha_selec;
@@ -62,5 +65,26 @@ private int dia, mes, anio;
     public void act_principal(View view){
         Intent i=new Intent(this, MainActivity.class);
         startActivity(i);
+    }
+    public void registrar(View view){
+        AdminDB admin=new AdminDB(this,"BDmovimiento",null,1);
+        SQLiteDatabase BD=admin.getWritableDatabase();
+        String fecha_DB=fecha_selec.getText().toString();
+        float monto_DB=Float.parseFloat(monto.getText().toString());
+        String concepto_DB=concepto.getSelectedItem().toString();
+        String categoria_DB="";
+        if(!monto.getText().toString().isEmpty()){
+            ContentValues registro=new ContentValues();
+            registro.put ("id",0);
+            registro.put("fecha", fecha_DB);
+            registro.put("monto",monto_DB);
+            registro.put("concepto",concepto_DB);
+            registro.put("categoria",categoria_DB);
+            BD.insert("movimientos",null,registro);
+            Toast.makeText(this,"Registro OK",Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this,"Debe completar el campo monto",Toast.LENGTH_LONG).show();
+        }
+        BD.close();
     }
 }
