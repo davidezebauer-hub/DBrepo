@@ -1,6 +1,7 @@
 package com.example.asistentedeahorro;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -57,11 +58,14 @@ class MainActivity extends AppCompatActivity {
         String fechaActual=dia+" de "+mesString;
         saldoFecha.setText("Saldo al "+fechaActual);
         //ARMANDO CONSULTA EN BD PARA OBTENER LOS VALORES A LLENAR EN LOS CAMPOS SALDOPESOS,ING,EG,GTC
-        /*AdminDB admin=new AdminDB(this,"BDmovimiento",null,1);
+        AdminDB admin=new AdminDB(this,"BDmovimiento",null,1);
         SQLiteDatabase BD=admin.getWritableDatabase();
-        String consulta="";
-*/
+        String consulta="select (sum(monto)) as sumaTotal from movimientos";
+        Cursor cursor = BD.rawQuery(consulta,null);
 
+        Float saldo_total= cursor.getFloat(cursor.getColumnIndex("sumaTotal"));
+        saldo_pesos.setText("$"+saldo_total.toString());
+        BD.close();
     }
     public void act_ingresos(View view){
         Intent i=new Intent(this, Ingresos.class);
