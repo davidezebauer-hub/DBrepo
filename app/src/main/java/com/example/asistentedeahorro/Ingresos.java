@@ -14,12 +14,10 @@ import android.widget.TextView;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import java.text.DecimalFormat;
 
 public class Ingresos extends AppCompatActivity {
 private TextView monto,fecha_selec;
 private Spinner concepto;
-private DatePicker datePicker;
 private int dia, mes, anio;
 
     @Override

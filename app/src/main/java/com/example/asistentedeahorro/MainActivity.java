@@ -3,11 +3,14 @@ package com.example.asistentedeahorro;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.view.View;
 import android.widget.TextView;
+
+import java.text.DecimalFormat;
 
 
 class MainActivity extends AppCompatActivity {
@@ -68,15 +71,25 @@ class MainActivity extends AppCompatActivity {
         if (cursor.moveToFirst()){
             float saldo_total=cursor.getFloat(cursor.getColumnIndex("sumaTotal"));
             String str_saldoTotal=Float.toString(saldo_total);
-            saldo_pesos.setText("$"+str_saldoTotal);
+            saldo_pesos.setText("$ "+(str_saldoTotal));
+            if(saldo_total>15000){
+                saldo_pesos.setTextColor(Color.GREEN);
+            }else{
+                if(saldo_total>=7000){
+                    saldo_pesos.setTextColor(Color.YELLOW);
+                }else{
+                    saldo_pesos.setTextColor(Color.RED);
+                }
+            }
         }
 //Llenar total ingresos
-        consulta="select (sum(monto)) as sumIngresos from movimientos where monto > 0";
+        consulta="select (sum(monto)) as sumIngresos from movimientos where (monto > 0) & (concepto!='Crédito')";
         cursor = BD.rawQuery(consulta,null);
         if (cursor.moveToFirst()){
             float totIngresos=cursor.getFloat(cursor.getColumnIndex("sumIngresos"));
             String str_totIng=Float.toString(totIngresos);
-            total_i.setText("$"+str_totIng);
+            total_i.setText("$ "+(str_totIng));
+
         }
 //Llenar total egresos
         consulta="select (sum(monto)) as sumEgresos from movimientos where (monto < 0) & (concepto != 'Crédito')";
@@ -84,7 +97,7 @@ class MainActivity extends AppCompatActivity {
         if (cursor.moveToFirst()){
             float totEgresos=-(cursor.getFloat(cursor.getColumnIndex("sumEgresos")));
             String str_totEg=Float.toString(totEgresos);
-            total_e.setText("$"+str_totEg);
+            total_e.setText("$ "+(str_totEg));
         }
 //Llenar total TC
         consulta="select (sum(monto)) as sumTC from movimientos where (monto < 0) & (concepto = 'Crédito')";
@@ -92,11 +105,15 @@ class MainActivity extends AppCompatActivity {
         if (cursor.moveToFirst()){
             float totTC=-(cursor.getFloat(cursor.getColumnIndex("sumTC")));
             String str_totTC=Float.toString(totTC);
-            total_TC.setText("$"+str_totTC);
+            total_TC.setText("$ "+(str_totTC));
         }
 
         BD.close();
     }
+   /* public String formatSTRDosDig(String nro){
+        DecimalFormat formato=new DecimalFormat("#.00");
+        return formato.format(nro);
+    }*/
     public void act_ingresos(View view){
         Intent i=new Intent(this, Ingresos.class);
         startActivity(i);
