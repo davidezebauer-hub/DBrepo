@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class Ingresos extends AppCompatActivity {
 private TextView monto,fecha_selec;
 private Spinner concepto;
@@ -71,6 +73,7 @@ private int dia, mes, anio;
         SQLiteDatabase BD=admin.getWritableDatabase();
         String fecha_DB=fecha_selec.getText().toString();
         float monto_DB=Float.parseFloat(monto.getText().toString());
+        monto_DB=Math.round(monto_DB*100)/100f;
         String concepto_DB=concepto.getSelectedItem().toString();
         String categoria_DB="";
         if(!monto.getText().toString().isEmpty()){

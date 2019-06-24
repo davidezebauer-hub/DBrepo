@@ -10,7 +10,7 @@ public class AdminDB extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase BaseDeDatos) {
-        BaseDeDatos.execSQL("create table movimientos (id integer primary key autoincrement, " +
+        BaseDeDatos.execSQL("create table if not exists movimientos (id integer primary key autoincrement, " +
                 "fecha text,monto real, concepto text, categoria text)");
     }
 
