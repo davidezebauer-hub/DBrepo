@@ -70,8 +70,8 @@ class MainActivity extends AppCompatActivity {
         Cursor cursor = BD.rawQuery(consulta,null);
         if (cursor.moveToFirst()){
             float saldo_total=cursor.getFloat(cursor.getColumnIndex("sumaTotal"));
-            String str_saldoTotal=Float.toString(saldo_total);
-            saldo_pesos.setText("$ "+(str_saldoTotal));
+            //String str_saldoTotal=Float.toString(saldo_total);
+            saldo_pesos.setText("$ "+String.format("%.2f",saldo_total));
             if(saldo_total>15000){
                 saldo_pesos.setTextColor(Color.GREEN);
             }else{
@@ -87,8 +87,8 @@ class MainActivity extends AppCompatActivity {
         cursor = BD.rawQuery(consulta,null);
         if (cursor.moveToFirst()){
             float totIngresos=cursor.getFloat(cursor.getColumnIndex("sumIngresos"));
-            String str_totIng=Float.toString(totIngresos);
-            total_i.setText("$ "+(str_totIng));
+            //String str_totIng=Float.toString(totIngresos);
+            total_i.setText("$ "+String.format("%.2f",totIngresos));
 
         }
 //Llenar total egresos
@@ -96,24 +96,21 @@ class MainActivity extends AppCompatActivity {
         cursor = BD.rawQuery(consulta,null);
         if (cursor.moveToFirst()){
             float totEgresos=-(cursor.getFloat(cursor.getColumnIndex("sumEgresos")));
-            String str_totEg=Float.toString(totEgresos);
-            total_e.setText("$ "+(str_totEg));
+            //String str_totEg=Float.toString(totEgresos);
+            total_e.setText("$ "+String.format("%.2f",totEgresos));
         }
 //Llenar total TC
         consulta="select (sum(monto)) as sumTC from movimientos where (monto < 0) & (concepto = 'Crédito')";
         cursor = BD.rawQuery(consulta,null);
         if (cursor.moveToFirst()){
             float totTC=-(cursor.getFloat(cursor.getColumnIndex("sumTC")));
-            String str_totTC=Float.toString(totTC);
-            total_TC.setText("$ "+(str_totTC));
+            //String str_totTC=Float.toString(totTC);
+            total_TC.setText("$ "+String.format("%.2f",totTC));
         }
+        /*BD.delete("movimientos",null,null);borrado de BD para comenzar de 0*/
 
         BD.close();
     }
-   /* public String formatSTRDosDig(String nro){
-        DecimalFormat formato=new DecimalFormat("#.00");
-        return formato.format(nro);
-    }*/
     public void act_ingresos(View view){
         Intent i=new Intent(this, Ingresos.class);
         startActivity(i);
