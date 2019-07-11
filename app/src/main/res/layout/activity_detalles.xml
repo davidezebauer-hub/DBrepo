@@ -15,24 +15,23 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginBottom="100dp"
             android:text="@string/detalle" />
+
+        <ListView
+            android:id="@+id/tit_tabla1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="415dp">
+            android:layout_height="443dp">
 
-            <LinearLayout
+            <ListView
+                android:id="@+id/lista"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ListView
-                    android:id="@+id/lista"
-                    android:layout_width="395dp"
-                    android:layout_height="715dp" />
-            </LinearLayout>
+                android:layout_height="wrap_content" />
         </ScrollView>
-    </LinearLayout>
 
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
