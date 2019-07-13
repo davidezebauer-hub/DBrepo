@@ -53,18 +53,16 @@ public class Detalles extends AppCompatActivity {
         arrayDetalles=new ArrayList<ListDetalles>();
         if(cursor.moveToFirst()){
             do {
-                ListDetalles detalles=new ListDetalles(cursor.getString(1),cursor.getString(3),cursor.getFloat(2));
+                String fecha=cursor.getString(1);
+                String tipo=cursor.getString(3);
+                Float monto=cursor.getFloat(2);
+                //ListDetalles detalles=new ListDetalles(cursor.getString(1),cursor.getString(3),cursor.getFloat(2));
+                ListDetalles detalles=new ListDetalles(fecha,tipo,monto);
                 arrayDetalles.add(detalles);
             }while(cursor.moveToNext());
         }
         adapter=new AdaptadorTabla(getApplicationContext(),arrayDetalles);
         lista.setAdapter(adapter);
         DB.close();
-    }
-    public void agregar_fila(){
-
-    }
-    public void crear_encabezado(){
-
     }
 }

@@ -13,10 +13,10 @@ import java.util.ArrayList;
 
 public class AdaptadorTabla extends BaseAdapter {
     ArrayList<ListDetalles> itemLista =new ArrayList<ListDetalles>();
-    Context                 context;
-    public AdaptadorTabla(Context c,ArrayList<ListDetalles>arrayDetalles){
+    Context context;
+    public AdaptadorTabla(Context c,ArrayList<ListDetalles> arrayDetalle){
         context= c;
-        arrayDetalles=itemLista;
+        itemLista=arrayDetalle;
     }
 
     @Override
@@ -32,10 +32,10 @@ public class AdaptadorTabla extends BaseAdapter {
         TextView lblFecha=(TextView)itemView.findViewById(R.id.lblFecha);
         TextView lblTipo=(TextView)itemView.findViewById(R.id.lblTipo);
         TextView lblMonto=(TextView)itemView.findViewById(R.id.lblMonto);
-        lblFecha.setText(""+itemLista.get(position).getList_fecha());
+        lblFecha.setText(itemLista.get(position).getList_fecha());
         lblTipo.setText(itemLista.get(position).getList_tipo());
         lblMonto.setText(itemLista.get(position).getList_monto().toString());
-        itemView.setBackgroundColor(Color.argb(255,250,250,250));
+        itemView.setBackgroundColor(Color.argb(255,255,255,255));
         return itemView;
     }
 }

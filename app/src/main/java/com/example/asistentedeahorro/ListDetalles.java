@@ -1,9 +1,6 @@
 package com.example.asistentedeahorro;
 
 class ListDetalles {
-    String list_fecha;
-    String list_tipo;
-    Float  list_monto;
 
     public ListDetalles(String list_fecha, String list_tipo, Float list_monto){
         this.list_fecha=list_fecha;
@@ -34,6 +31,9 @@ class ListDetalles {
     public void setList_monto(Float list_monto) {
         this.list_monto = list_monto;
     }
+    String list_fecha;
+    String list_tipo;
+    Float  list_monto;
 
 }
 

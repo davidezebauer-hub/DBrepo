@@ -21,17 +21,14 @@
         <ListView
             android:id="@+id/tit_tabla1"
             android:layout_width="match_parent"
-            android:layout_height="60dp" />
+            android:layout_height="60dp" >
 
-        <ScrollView
+        </ListView>
+
+        <ListView
+            android:id="@+id/lista"
             android:layout_width="match_parent"
-            android:layout_height="443dp">
-
-            <ListView
-                android:id="@+id/lista"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </ScrollView>
+            android:layout_height="217dp" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
