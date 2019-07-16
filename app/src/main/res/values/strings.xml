@@ -16,6 +16,7 @@
     <string name="cancelar">Cancelar</string>
     <string name="categoria">Categoría</string>
     <string name="nuevoEg">Nuevo Egreso</string>
+    <string name="volver">Volver</string>
     <string-array name="cabecera_tabla_detalles">
         <item>Fecha</item>
         <item>Tipo</item>

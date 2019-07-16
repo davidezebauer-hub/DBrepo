@@ -2,7 +2,7 @@ package com.example.asistentedeahorro;
 
 class ListDetalles {
 
-    public ListDetalles(String list_fecha, String list_tipo, Float list_monto){
+    public ListDetalles(String list_fecha, String list_tipo, String list_monto){
         this.list_fecha=list_fecha;
         this.list_tipo=list_tipo;
         this.list_monto=list_monto;
@@ -24,16 +24,16 @@ class ListDetalles {
         this.list_tipo = list_tipo;
     }
 
-    public Float getList_monto() {
+    public String getList_monto() {
         return list_monto;
     }
 
-    public void setList_monto(Float list_monto) {
+    public void setList_monto(String list_monto) {
         this.list_monto = list_monto;
     }
     String list_fecha;
     String list_tipo;
-    Float  list_monto;
+    String  list_monto;
 
 }
 

@@ -15,20 +15,37 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:text="@string/detalle" />
 
         <ListView
             android:id="@+id/tit_tabla1"
             android:layout_width="match_parent"
-            android:layout_height="60dp" >
+            android:layout_height="25dp">
 
         </ListView>
 
         <ListView
             android:id="@+id/lista"
             android:layout_width="match_parent"
-            android:layout_height="217dp" />
+            android:layout_height="151dp"
+            android:layout_marginBottom="30dp" />
+
+        <TableLayout
+            android:id="@+id/tabla2"
+            android:layout_width="match_parent"
+            android:layout_height="213dp" />
+
+        <Button
+            android:id="@+id/inicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="volver"
+            android:text="@string/volver" />
+
 
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
