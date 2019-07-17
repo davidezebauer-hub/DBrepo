@@ -69,15 +69,16 @@ private TextView tvFecha;
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
     public void registrar(View view){
-        AdminDB admin=new AdminDB(this,"BDmovimiento",null,1);
-        SQLiteDatabase BD=admin.getWritableDatabase();
-        String fecha_DB=tvFecha.getText().toString();
-        float monto_DB=Float.parseFloat(monto.getText().toString());
-        monto_DB=Math.round(monto_DB*100)/100f;
-        monto_DB=-monto_DB;
-        String concepto_DB=concepto.getSelectedItem().toString();
-        String categoria_DB=categorias.getSelectedItem().toString();
         if(!monto.getText().toString().isEmpty()){
+            AdminDB admin=new AdminDB(this,"BDmovimiento",null,1);
+            SQLiteDatabase BD=admin.getWritableDatabase();
+            String fecha_DB=tvFecha.getText().toString();
+            float monto_DB=Float.parseFloat(monto.getText().toString());
+            monto_DB=Math.round(monto_DB*100)/100f;
+            monto_DB=-monto_DB;
+            String concepto_DB=concepto.getSelectedItem().toString();
+            String categoria_DB=categorias.getSelectedItem().toString();
+
             ContentValues registro=new ContentValues();
             registro.put("fecha", fecha_DB);
             registro.put("monto",monto_DB);
@@ -85,11 +86,12 @@ private TextView tvFecha;
             registro.put("categoria",categoria_DB);
             BD.insert("movimientos",null,registro);
             monto.setText("");
-            Toast.makeText(this,"Registro OK",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"El registro se realizó correctamente",Toast.LENGTH_LONG).show();
+            BD.close();
         }else{
-            Toast.makeText(this,"Debe completar el campo monto",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Debe completar el campo Monto",Toast.LENGTH_LONG).show();
         }
-        BD.close();
+
     }
 
     public void act_principal(View view){

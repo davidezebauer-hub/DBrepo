@@ -67,14 +67,15 @@ private int dia, mes, anio;
         startActivity(i);
     }
     public void registrar(View view){
-        AdminDB admin=new AdminDB(this,"BDmovimiento",null,1);
-        SQLiteDatabase BD=admin.getWritableDatabase();
-        String fecha_DB=fecha_selec.getText().toString();
-        float monto_DB=Float.parseFloat(monto.getText().toString());
-        monto_DB=Math.round(monto_DB*100)/100f;
-        String concepto_DB=concepto.getSelectedItem().toString();
-        String categoria_DB="";
         if(!monto.getText().toString().isEmpty()){
+            AdminDB admin=new AdminDB(this,"BDmovimiento",null,1);
+            SQLiteDatabase BD=admin.getWritableDatabase();
+            String fecha_DB=fecha_selec.getText().toString();
+            float monto_DB=Float.parseFloat(monto.getText().toString());
+            monto_DB=Math.round(monto_DB*100)/100f;
+            String concepto_DB=concepto.getSelectedItem().toString();
+            String categoria_DB="";
+
             ContentValues registro=new ContentValues();
             registro.put("fecha", fecha_DB);
             registro.put("monto",monto_DB);
@@ -82,10 +83,11 @@ private int dia, mes, anio;
             registro.put("categoria",categoria_DB);
             BD.insert("movimientos",null,registro);
             monto.setText("");
-            Toast.makeText(this,"Registro OK",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"El registro se realizó correctamente",Toast.LENGTH_LONG).show();
+            BD.close();
+
         }else{
-            Toast.makeText(this,"Debe completar el campo monto",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Debe completar el campo Monto",Toast.LENGTH_LONG).show();
         }
-        BD.close();
     }
 }
