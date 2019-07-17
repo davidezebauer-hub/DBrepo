@@ -17,6 +17,10 @@
     <string name="categoria">Categoría</string>
     <string name="nuevoEg">Nuevo Egreso</string>
     <string name="volver">Volver</string>
+    <string name="fecha">Fecha</string>
+    <string name="tipo">Tipo</string>
+    <string name="montot">Monto</string>
+
     <string-array name="cabecera_tabla_detalles">
         <item>Fecha</item>
         <item>Tipo</item>

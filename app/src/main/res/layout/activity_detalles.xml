@@ -7,9 +7,15 @@
     tools:context=".Detalles">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:id="@+id/linearLayout"
+        android:layout_width="350dp"
+        android:layout_height="480dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView8"
@@ -17,26 +23,88 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/detalle" />
 
-        <ListView
-            android:id="@+id/tit_tabla1"
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="25dp">
+            android:layout_height="wrap_content">
 
-        </ListView>
+            <TableRow
+                android:id="@+id/titulo_tabla1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <ListView
-            android:id="@+id/lista"
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="200px"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/marcotabla"
+                    android:text="@string/fecha"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="250px"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/marcotabla"
+                    android:text="@string/tipo"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="200px"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/marcotabla"
+                    android:text="@string/montot"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:textAlignment="center" />
+            </TableRow>
+
+        </TableLayout>
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="151dp"
-            android:layout_marginBottom="30dp" />
+            android:layout_height="230dp"
+            android:fillViewport="false"
+            android:paddingBottom="20dp"
+            android:scrollbarDefaultDelayBeforeFade="@android:integer/config_longAnimTime">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TableLayout
+                    android:id="@+id/tabla1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </TableLayout>
+            </LinearLayout>
+        </ScrollView>
 
         <TableLayout
             android:id="@+id/tabla2"
             android:layout_width="match_parent"
-            android:layout_height="213dp" />
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <Button
             android:id="@+id/inicio"
@@ -44,8 +112,6 @@
             android:layout_height="wrap_content"
             android:onClick="volver"
             android:text="@string/volver" />
-
-
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
